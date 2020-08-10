@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementWithVelocity : MonoBehaviour
 {
-
     public float speed;
 
     private Rigidbody rb;
@@ -18,10 +15,7 @@ public class PlayerMovementWithVelocity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 direction = Vector3.ClampMagnitude(new Vector3(horizontal, 0f, vertical), 1f);
+        Vector3 direction = Vector3.ClampMagnitude(BasicInput.GetInputDirection(), 1f);
         rb.velocity = direction * speed;
     }
 }

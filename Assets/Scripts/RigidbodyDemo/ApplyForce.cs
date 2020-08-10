@@ -1,24 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ApplyForce : MonoBehaviour
 {
     public Vector3 forceDirection;
     public ForceMode forceMode;
-    Rigidbody rb;
+
+    private Rigidbody m_Rigidbody;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            rb.AddForce(forceDirection, forceMode);
+            m_Rigidbody.AddForce(forceDirection, forceMode);
         }
     }
 }
