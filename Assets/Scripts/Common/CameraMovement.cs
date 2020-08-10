@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -9,35 +8,35 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        bool isSpeedBoost = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-
+        bool isSpeedBoost = Keyboard.current.shiftKey.isPressed;
+        
         Vector3 direction = Vector3.zero;
         // Forward and backward
-        if (Input.GetKey(KeyCode.W))
+        if (Keyboard.current.wKey.isPressed)
         {
             direction.z += 1;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Keyboard.current.sKey.isPressed)
         {
             direction.z -= 1;
         }
 
         // Left and right
-        if (Input.GetKey(KeyCode.A))
+        if (Keyboard.current.aKey.isPressed)
         {
             direction.x -= 1;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Keyboard.current.dKey.isPressed)
         {
             direction.x += 1;
         }
 
         // Up and down
-        if (Input.GetKey(KeyCode.Q))
+        if (Keyboard.current.qKey.isPressed)
         {
             direction.y -= 1;
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Keyboard.current.eKey.isPressed)
         {
             direction.y += 1;
         }
